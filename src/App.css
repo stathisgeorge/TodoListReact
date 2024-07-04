@@ -1,47 +1,60 @@
 body{
-  background-color: rgb(20, 17, 17);
+  background-color: rgb(27, 25, 61); 
   color: #e3dede;
 }
 main{
-  max-width: 300px;
+  max-width: 350px;
   margin: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 5rem;
 }
 
-form{
-  border:3px solid #767781;
+ form{
+  border:3px solid #ffffff;
   border-radius:20px;
-  padding-left: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-bottom: 50px;
-  display: flex;
-}
+  padding: 10px;
+  align-items: center;
 
-form input[type="text"]{
-  background:none;
-  color:#cfcfcf;
-  border: 0;
-  padding:0 8px;
+ }
+
+ .form_container{
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  display: block;
-}
+ }
 
 
-form button{
-  background-color: #61dafb;
-  border:0;
-  border-radius: 6px;
-  cursor:pointer;
+form input[label]{
+  color:#ffffff;
+  background:none;
 }
+form input[type="text"]{
+  color:#ffffff;
+  border: 5;
+  width: 100%;
+   
+ } 
+
+
+ .EditForm input[type="text"]{
+  color:#ffffff;
+  border: 5;
+  width: 100%;
+  display: flex;
+  background:none;
+
+ }
 
 div.task{
-  background-color: #30313D;
+  background-color: #a03b3b;
   border-radius:10px;
   padding: 5px;
-  margin-top:5px;
+  margin-top:10px;
   display: flex;
   align-items: center;
-  transition: opacity .1s linear;
 }
 
 div.task svg {
@@ -53,29 +66,14 @@ div.task svg {
 div.task.done{
   opacity: 0.5;
   text-decoration: line-through;
+  background-color: green;
 }
 
-div.task span{
-  position: relative;
-}
 
-div.task span:before{
-  content: '';
-  display: block;
-  width: 0;
-  height: 1px;
-  background-color: #ddd;
-  position: absolute;
-  top:10px;
-  transition: width .1s linear;
-}
-
-div.task.done span:before{
-  width: 100%;
-}
 
 div.task-name, div.task form{
   flex-grow: 1;
+  text-align: center;
 }
 
 button.trash{
@@ -91,13 +89,102 @@ button.trash svg{
 
 h1,h2{
   text-align: center;
+  color: white;
 }
 div.checkbox{
   display: flex;
+}
+
+div.checkbox.checked{
+  background-color: blue;
 }
 
 div.task input{
   border: 2px solid #555;
   border-radius: 5px;
   padding: 2px 4px;
+}
+
+
+.InputTask {
+  margin-bottom: 10px;
+  margin-right: 25px;
+}
+
+.InputTask input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.AddTaskButton {
+  
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+}
+
+.FormAndButton{
+  display: inline;
+}
+
+.AddTaskButton:hover {
+  background-color: #0056b3;
+}
+
+ .TaskName{
+    font-weight: bold;
+ }
+
+ .TaskRecord{
+  text-align-last: center;
+ }
+
+
+ .LoginForm{
+  padding: 50px;
+  
+ }
+
+ .error{
+   color: red;
+ }
+
+ .login-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+ 
+
+input {
+  border: 1px solid rgb(172, 171, 171);
+  border-radius: 10px;
+  padding: 1vw 1vw;
+  outline: none;
+  margin: 5px;
+}
+
+.login-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;  
+  align-self: flex-end;   
+}
+
+.login-button:hover {
+  background-color: #45a049;
 }

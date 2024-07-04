@@ -1,20 +1,30 @@
 import { useState } from "react";
 import Checkbox from "./Checkbox";
 
-export default function Task({ name, done, onToggle, onTrash , onRename}) {
+export default function Task({ name, description, done, onToggle, onTrash , onRename,onEditDescription}) {
   const [editMode, setEditMode] = useState(false);
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      console.log('pressed enter');
+      setEditMode(false);
+    }
+  };
   return (
     <div className={"task " + (done ? "done" : "")}>
       <Checkbox checked={done} onClick={() => onToggle(!done)} />
       {!editMode && (
-        <div className="task-name" onClick={() => setEditMode((prev) => !prev)}>
-          <span> {name}</span>
+      <div className="task-name"> 
+      {/* <div className="task-name" onClick={() => setEditMode((prev) => !prev) }>  */}
+          <span className="TaskName"> {name}</span><br></br><span>{description}</span>
+         
         </div>
       )}
 
       {editMode && (
-        <form onSubmit={e=>{e.preventDefault(); setEditMode(false)}}>
-          <input type="text" value={name} onChange={e=>onRename(e.target.value)}/>
+        <form   onSubmit={e=>{e.preventDefault(); setEditMode(false)}} >
+           <input type="text" value={name} onChange={e=>onRename(e.target.value)} />
+           <input type="text" value={description} onChange={e=>onEditDescription(e.target.value)}/> 
         </form>
       )}
       <button className="trash" onClick={onTrash}>
