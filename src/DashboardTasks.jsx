@@ -9,7 +9,6 @@ export default function DashboardTasks({ tasks, addTask, updateTaskDone, removeT
       <div>
         <TaskForm onAdd={addTask} />
       </div>
-
       {tasks && tasks.map((task, index) => (
         <Task  
           key={index}

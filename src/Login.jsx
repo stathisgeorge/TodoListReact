@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 
-export default function Login() {
+export default function Login({ setIsLogged }) {
     localStorage.setItem('georgestathis13@gmail.com','17032010');
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [errors,setErrors]=useState([]);
     const navigate = useNavigate();
-    const [isLogged, setIsLogged]=useState(false);
- 
+  
      const handleSubmit=(event)=>{
         event.preventDefault();
         const errors=validate();
@@ -54,9 +53,8 @@ export default function Login() {
     }
   return (
     <>
-    <h1>Todo list</h1>
-    <main>
-      {" "}
+  
+       
       <form className="form_container" onSubmit={handleSubmit}>
           <div className="LoginForm">
              <h1>Login</h1>
@@ -75,6 +73,6 @@ export default function Login() {
           
           <button type="submit" className="login-button">Login</button>
       </form>
-    </main></>
+  </>
   );
 }

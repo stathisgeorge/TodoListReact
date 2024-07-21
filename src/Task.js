@@ -1,37 +1,71 @@
 import { useState } from "react";
 import Checkbox from "./Checkbox";
 
-export default function Task({ name, description, done, onToggle, onTrash , onRename,onEditDescription}) {
-  const [editMode, setEditMode] = useState(false);
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      console.log('pressed enter');
-      setEditMode(false);
-    }
-  };
+export default function Task({
+  name,
+  description,
+  done,
+  onToggle,
+  onTrash,
+  onRename
+}) {
+
   return (
     <div className={"task " + (done ? "done" : "")}>
       <Checkbox checked={done} onClick={() => onToggle(!done)} />
-      {!editMode && (
-      <div className="task-name"> 
-      {/* <div className="task-name" onClick={() => setEditMode((prev) => !prev) }>  */}
-          <span className="TaskName"> {name}</span><br></br><span>{description}</span>
-         
+        <div className="task-name">
+          <span className="TaskName"> {name}</span>
+          <br></br>
+          <span>{description}</span>
         </div>
-      )}
 
-      {editMode && (
-        <form   onSubmit={e=>{e.preventDefault(); setEditMode(false)}} >
-           <input type="text" value={name} onChange={e=>onRename(e.target.value)} />
-           <input type="text" value={description} onChange={e=>onEditDescription(e.target.value)}/> 
-        </form>
-      )}
-      <button className="trash" onClick={onTrash}>
+      {/* <button className="trash" onClick={onTrash}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" />
         </svg>
-      </button>
+      </button> */}
+
+      <button className="bin-button" 
+    
+      onClick={onTrash}>
+  <svg
+    className="bin-top"
+    viewBox="0 0 39 7"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+     width="30"  
+    height="30"
+  >
+    <line y1="5" x2="39" y2="5" stroke="white" strokeWidth="4"></line>
+    <line
+      x1="12"
+      y1="1.5"
+      x2="26.0357"
+      y2="1.5"
+      stroke="white"
+      strokeWidth="3"
+    ></line>
+  </svg>
+  <svg
+    className="bin-bottom"
+    viewBox="0 0 33 39"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <mask id="path-1-inside-1_8_19" fill="white">
+      <path
+        d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
+      ></path>
+    </mask>
+    <path
+      d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+      fill="white"
+      mask="url(#path-1-inside-1_8_19)"
+    ></path>
+    <path d="M12 6L12 29" stroke="white" strokeWidth="4"></path>
+    <path d="M21 6V29" stroke="white" strokeWidth="4"></path>
+  </svg>
+</button>
     </div>
   );
 }
