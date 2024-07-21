@@ -21,14 +21,21 @@ main{
  }
 
  .form_container{
+ 
   justify-content: center;
   align-items: center;
   width: 100%;
+  border: 2px solid rgb(49, 118, 222);  
+  border-radius: 8px;    
+  padding: 5%;        
+  max-width: 400px;     
+  margin: auto;          
+  background-color: #fff
  }
 
 
 form input[label]{
-  color:#ffffff;
+  color:#260bc0;
   background:none;
 }
 form input[type="text"]{
@@ -64,9 +71,9 @@ div.task svg {
 }
 
 div.task.done{
-  opacity: 0.5;
+  opacity: 0.8;
   text-decoration: line-through;
-  background-color: green;
+  background-color: rgb(28, 114, 28);
 }
 
 
@@ -107,22 +114,20 @@ div.task input{
 
 
 .InputTask {
-  margin-bottom: 10px;
-  margin-right: 25px;
-}
+  margin-bottom: 5%;
+ }
 
 .InputTask input[type="text"] {
   width: 100%;
   padding: 8px;
   font-size: 16px;
+  color:  #007bff;
 }
 
 .AddTaskButton {
-  
   padding: 10px 20px;
   background-color: #007bff;
-  color: white;
-  border: none;
+  color: rgb(55, 12, 120);
   cursor: pointer;
 
 }
@@ -145,8 +150,8 @@ div.task input{
 
 
  .LoginForm{
-  padding: 50px;
-  
+  color: #007bff;
+  padding: 10px;
  }
 
  .error{
@@ -313,4 +318,21 @@ input {
 }
 .bin-button:active {
   transform: scale(0.9);
+}
+
+.navbar{
+  background-color: #0056b3;
+}
+.navbar-nav.ml-auto {
+  margin-left: auto;
+  background-color: #007bff;
+  color: #0056b3;
+}
+
+.completedTasks{
+  color:#1f8122;
+}
+.pendingTasks{
+  color:  #d31622;
+
 }

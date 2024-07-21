@@ -26,7 +26,7 @@ export default function TaskForm({ onAdd }) {
     return error;
   };
   return (
-    <form onSubmit={handleSubmit} className="form-container">
+    <form onSubmit={handleSubmit} className="form_container">
  
           <div className="InputTask">
             <input
@@ -52,9 +52,7 @@ export default function TaskForm({ onAdd }) {
           <div className="button-top"><span>+</span>Add Task</div>
           <div className="button-bottom"></div>
           <div className="button-base"></div>
-        </button>
-        
-     
+        </button> 
     </form>
   );
 }

@@ -1,16 +1,10 @@
-import TaskForm from "./TaskForm";
 import "./App.css";
-import Task from "./Task";
 import { useState, useEffect } from "react";
 import DashboardTasks from "./DashboardTasks";
-// import { RiTodoLine } from "react-icons/ri";
-
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./Header";
+import TitleApp from "./TitleApp";
+import {BrowserRouter as Router,Routes,Route,} from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -73,11 +67,15 @@ function App() {
 
   return (
     <>
-      <main>
-        <h1>Todo List</h1>
-        <Router>
+      <Router>
+        <Header isLogged={isLogged} setIsLogged={setIsLogged} />
+        <TitleApp />
+        <main>
           <Routes>
-          <Route path="/login" element={<Login setIsLogged={setIsLogged} />} />
+            <Route
+              path="/login"
+              element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
+            />
             <Route path="/register" element={<Register />} />
             <Route
               path="/DashboardTasks"
@@ -95,8 +93,8 @@ function App() {
               }
             />
           </Routes>
-        </Router>
-      </main>
+        </main>
+      </Router>
     </>
   );
 }

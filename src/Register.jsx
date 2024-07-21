@@ -12,7 +12,7 @@ export default function Register() {
     event.preventDefault();
     const errors = validate();
     setErrors(errors);
-    if (!errors.email && !errors.pass) {
+    if (!errors.email && !errors.password) {
       localStorage.setItem(email, password);
       navigate("/login");
     }
@@ -51,37 +51,41 @@ export default function Register() {
   };
   return (
     <>
-    
-        <form className="form_container" onSubmit={handleSubmit}>
-          <div className="LoginForm">
-            <h1>Registration</h1>
-            <input
-              label="email"
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {errors.email && <div className="error">{errors.email}</div>}
-            <input
-              label="password"
-              type="password"
-              placeholder="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <input
-              label="confirmedPassword"
-              type="password"
-              placeholder="password"
-              onChange={(e) => setConfPassword(e.target.value)}
-            />{" "}
-            {errors.password && <div className="error">{errors.password}</div>}
-          </div>
+      <form className="form_container" onSubmit={handleSubmit}>
+        <div className="LoginForm">
+          <h1>Registration</h1>
+          <input
+            label="email"
+            type="email"
+            placeholder="Email"
+            className="form-control mt-3"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errors.email && <div className="error">{errors.email}</div>}
+          <input
+            label="password"
+            type="password"
+            placeholder="password"
+            className="form-control mt-3"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            label="confirmedPassword"
+            type="password"
+            placeholder="password"
+            className="form-control mt-3"
+            onChange={(e) => setConfPassword(e.target.value)}
+          />{" "}
+          {errors.password && <div className="error">{errors.password}</div>}
+        </div>
 
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </form>
-      
+        <button type="submit" className="login-button mt-3">
+          Login
+        </button>
+      </form>
+      <p className="mt-1">
+        Already Have an Account <span>SignIn</span>{" "}
+      </p>
     </>
   );
 }
