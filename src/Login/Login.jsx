@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
- 
+import {Link} from 'react-router-dom';
+
 export default function Login({ isLogged, setIsLogged }) {
   localStorage.setItem("georgestathis13@gmail.com", "17032010");
 
@@ -9,6 +10,13 @@ export default function Login({ isLogged, setIsLogged }) {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (isLogged) {
+      navigate("/DashboardTasks");
+    }
+  }, [isLogged, navigate]);
+
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const errors = validate();
@@ -16,9 +24,8 @@ export default function Login({ isLogged, setIsLogged }) {
     if (Object.keys(errors).length === 0) {
       var pass = localStorage.getItem(email);
       if (pass === password) {
-        console.log("success");
         setIsLogged(true);
-        console.log(isLogged);
+        localStorage.setItem("isLogged", "true");
         navigate("/dashboardTasks");
       } else {
         setErrors({ wrongCredentials: "Invalid email or password" });
@@ -46,12 +53,12 @@ export default function Login({ isLogged, setIsLogged }) {
   return (
     <>
       <form className="form_container" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <div className="LoginForm">
-          <input
+      <div className="LoginForm">
+        <h1>Login</h1>
+           <input
             label="email"
             type="email"
-            className="form-control mt-4"
+            className="form-control mt-3"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -60,7 +67,7 @@ export default function Login({ isLogged, setIsLogged }) {
           <input
             label="password"
             type="password"
-            className="form-control mt-4"
+            className="form-control mt-3"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -71,11 +78,16 @@ export default function Login({ isLogged, setIsLogged }) {
               <div className="error">{errors.wrongCredentials}</div>
             )}
           </span>
-        </div>
-        <button type="submit" className="login-button mt-4">
+         <button type="submit" className="login-button mt-2">
           Login
         </button>
+        </div>
+        <Link to="/register"  className="mt-1">
+        I haven't got Account <span>SignIn</span>{" "}
+      </Link>
+     
       </form>
+     
     </>
   );
 }

@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import { useNavigate } from 'react-router-dom';
-import LogoutBtn from "./LogoutBtn";
+import LogoutBtn from "../Logout/LogoutBtn";
  
 export default function Header({isLogged, setIsLogged}){
     const navigate = useNavigate();

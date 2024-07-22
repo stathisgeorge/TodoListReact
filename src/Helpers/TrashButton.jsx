@@ -1,22 +1,7 @@
-import Checkbox from "./Checkbox";
-
-export default function Task({
-  name,
-  description,
-  done,
-  onToggle,
-  onTrash,
-  onRename,
-}) {
-  return (
-    <div className={"task " + (done ? "done" : "")}>
-      <Checkbox checked={done} onClick={() => onToggle(!done)} />
-      <div className="task-name">
-        <span className="TaskName"> {name}</span>
-        <br></br>
-        <span>{description}</span>
-      </div>
-      <button className="bin-button" onClick={onTrash}>
+export default function TrashButton({onTrash}){
+    return(
+        <>
+         <button className="bin-button" onClick={onTrash}>
         <svg
           className="bin-top"
           viewBox="0 0 39 7"
@@ -53,6 +38,6 @@ export default function Task({
           <path d="M21 6V29" stroke="white" strokeWidth="4"></path>
         </svg>
       </button>
-    </div>
-  );
+        </>
+    );
 }

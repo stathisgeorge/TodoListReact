@@ -3,7 +3,7 @@
 export default function TitleApp(){
     return(
         <>
-        <h1>Todo List</h1>
+        <h1 className="titleApp">Todo List</h1>
         </>
     );
 }

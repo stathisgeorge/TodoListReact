@@ -25,7 +25,7 @@ main{
   justify-content: center;
   align-items: center;
   width: 100%;
-  border: 2px solid rgb(49, 118, 222);  
+  border: 3px solid rgb(49, 118, 222);  
   border-radius: 8px;    
   padding: 5%;        
   max-width: 400px;     
@@ -41,20 +41,9 @@ form input[label]{
 form input[type="text"]{
   color:#ffffff;
   border: 5;
-  width: 100%;
-   
+  width: 100%; 
  } 
-
-
- .EditForm input[type="text"]{
-  color:#ffffff;
-  border: 5;
-  width: 100%;
-  display: flex;
-  background:none;
-
- }
-
+ 
 div.task{
   background-color: #a03b3b;
   border-radius:10px;
@@ -74,11 +63,9 @@ div.task.done{
   opacity: 0.8;
   text-decoration: line-through;
   background-color: rgb(28, 114, 28);
-}
+} 
 
-
-
-div.task-name, div.task form{
+div.task-record, div.task form{
   flex-grow: 1;
   text-align: center;
 }
@@ -86,12 +73,12 @@ div.task-name, div.task form{
 button.trash{
   background:none;
   border:none;
-  display: flex;
+  display: block;
   cursor: pointer;
 }
 button.trash svg{
   fill:#888;
-  height: 14px;
+  height: 10px;
 }
 
 h1,h2{
@@ -100,19 +87,13 @@ h1,h2{
 }
 div.checkbox{
   display: flex;
-}
-
-div.checkbox.checked{
-  background-color: blue;
-}
+} 
 
 div.task input{
   border: 2px solid #555;
   border-radius: 5px;
   padding: 2px 4px;
-}
-
-
+} 
 .InputTask {
   margin-bottom: 5%;
  }
@@ -123,32 +104,11 @@ div.task input{
   font-size: 16px;
   color:  #007bff;
 }
-
-.AddTaskButton {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: rgb(55, 12, 120);
-  cursor: pointer;
-
-}
-
-.FormAndButton{
-  display: inline;
-}
-
-.AddTaskButton:hover {
-  background-color: #0056b3;
-}
-
+ 
  .TaskName{
     font-weight: bold;
  }
-
- .TaskRecord{
-  text-align-last: center;
- }
-
-
+  
  .LoginForm{
   color: #007bff;
   padding: 10px;
@@ -166,10 +126,7 @@ div.task input{
   max-width: 400px;
   width: 100%;
   text-align: center;
-}
-
- 
-
+} 
 input {
   border: 1px solid rgb(172, 171, 171);
   border-radius: 10px;
@@ -193,10 +150,30 @@ input {
 .login-button:hover {
   background-color: #45a049;
 }
+ 
+.completedTasks{
+  color:#1f8122;
+}
+.pendingTasks{
+  color:  #d31622;
+
+}
+ 
+.titleApp{
+  color: #555;
+  align-content: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: xx-large;
+}
 
 
+.logoutBtn{
+  color: #803;
+  background-color: #9d3656;
+}
 
-
+/* UIVERSE CSS */
 .button {
   -webkit-appearance: none;
   appearance: none;
@@ -286,9 +263,6 @@ input {
   box-shadow: 0 1px 1px 0 rgba(255, 255, 255, .75), inset 0 2px 2px rgba(0, 0, 0, .25);
 }
 
-
-
-
 .bin-button {
   display: flex;
   flex-direction: column;
@@ -327,12 +301,4 @@ input {
   margin-left: auto;
   background-color: #007bff;
   color: #0056b3;
-}
-
-.completedTasks{
-  color:#1f8122;
-}
-.pendingTasks{
-  color:  #d31622;
-
 }

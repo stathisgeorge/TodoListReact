@@ -1,7 +1,7 @@
 export default function LogoutBtn({ handleLogout }) {
   return (
     <>
-      <button onClick={handleLogout} className="btn btn-outline-danger">
+      <button onClick={handleLogout} className="btn btn-danger">
         Logout
       </button>
     </>

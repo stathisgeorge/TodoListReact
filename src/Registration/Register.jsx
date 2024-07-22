@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [password, setPassword] = useState("");
@@ -15,10 +16,8 @@ export default function Register() {
     if (!errors.email && !errors.password) {
       localStorage.setItem(email, password);
       navigate("/login");
-    }
-
-    console.log("errors", errors);
-  };
+    } 
+   };
 
   const validate = () => {
     const error = {};
@@ -30,12 +29,12 @@ export default function Register() {
       error.email = "";
     }
     if (!password || !confPassword) {
-      error.password = "password is required";
+      error.password = "Password is required";
     } else if (password.length < 8) {
-      error.password = "password should be more than 8 characters/numbers";
+      error.password = "Password should be more than 8 characters/numbers";
       return error;
     } else if (password !== confPassword) {
-      error.password = "Passwords not match";
+      error.password = "Passwords don't match";
     } else {
       error.password = "";
     }
@@ -45,8 +44,7 @@ export default function Register() {
         error.wrongCredentials = "Email or password is wrong";
       }
       console.log(error);
-    }
-
+    } 
     return error;
   };
   return (
@@ -75,17 +73,16 @@ export default function Register() {
             placeholder="password"
             className="form-control mt-3"
             onChange={(e) => setConfPassword(e.target.value)}
-          />{" "}
+          /> 
           {errors.password && <div className="error">{errors.password}</div>}
+          <button type="submit" className="login-button mt-2">
+            Login
+          </button> 
         </div>
-
-        <button type="submit" className="login-button mt-3">
-          Login
-        </button>
+        <Link to="/login" className="mt-1">
+          Already Have an Account <span>SignIn</span> 
+        </Link>
       </form>
-      <p className="mt-1">
-        Already Have an Account <span>SignIn</span>{" "}
-      </p>
     </>
   );
 }

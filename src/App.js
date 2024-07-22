@@ -1,70 +1,24 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useState, useEffect } from "react";
 import DashboardTasks from "./DashboardTasks";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./Header";
-import TitleApp from "./TitleApp";
-import {BrowserRouter as Router,Routes,Route,} from "react-router-dom";
-import Login from "./Login";
-import Register from "./Register";
+import Header from "./Helpers/Header";
+import TitleApp from "./Helpers/TitleApp";
+import Login from "./Login/Login";
+import Register from "./Registration/Register";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
   useEffect(() => {
-    if (!tasks || tasks.length === 0) return;
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-  useEffect(() => {
-    const tasks = JSON.parse(localStorage.getItem("tasks"));
-    setTasks(tasks);
+    const loggedIn = localStorage.getItem("isLogged") === "true";
+    setIsLogged(loggedIn);
   }, []);
-  function addTask(name, description) {
-    console.log("description", description);
-    setTasks((prev) => {
-      if (!prev) prev = [];
-      return [...prev, { name: name, description: description, done: false }];
-    });
-  }
-
-  function updateTaskDone(taskIndex, newDone) {
-    setTasks((prev) => {
-      const newTasks = [...prev];
-      newTasks[taskIndex].done = newDone;
-      return newTasks;
-    });
-  }
-
-  const numberComplete = tasks ? tasks.filter((t) => t.done).length : 0;
-  const totalNumber = tasks ? tasks.length : 0;
-  if (tasks) {
-    tasks.sort((a, b) => {
-      return a.done - b.done;
-    });
-  }
-
-  function removeTask(taskIndexToRemove) {
-    setTasks((prev) => {
-      return prev.filter((taskObject, index) => index !== taskIndexToRemove);
-    });
-  }
-
-  function renameTask(index, newName) {
-    setTasks((prev) => {
-      const newTasks = [...prev];
-      newTasks[index].name = newName;
-      return [...prev];
-    });
-  }
-
-  function editDescription(index, newDescription) {
-    setTasks((prev) => {
-      const newTasks = [...prev];
-      newTasks[index].description = newDescription;
-      return [...prev];
-    });
-  }
-
   return (
     <>
       <Router>
@@ -77,19 +31,16 @@ function App() {
               element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
             />
             <Route path="/register" element={<Register />} />
+            <Route path="/DashboardTasks" element={<DashboardTasks />} />
+
             <Route
-              path="/DashboardTasks"
+              path="/"
               element={
-                <DashboardTasks
-                  tasks={tasks}
-                  addTask={addTask}
-                  updateTaskDone={updateTaskDone}
-                  removeTask={removeTask}
-                  renameTask={renameTask}
-                  editDescription={editDescription}
-                  numberComplete={numberComplete}
-                  totalNumber={totalNumber}
-                />
+                isLogged ? (
+                  <Navigate to="/DashboardTasks" replace />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
               }
             />
           </Routes>
