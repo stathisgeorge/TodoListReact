@@ -7,7 +7,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
-import DashboardTasks from "./DashboardTasks";
+import Dashboard from "./Dashboard";
 import Header from "./Helpers/Header";
 import TitleApp from "./Helpers/TitleApp";
 import Login from "./Login/Login";
@@ -31,13 +31,13 @@ function App() {
               element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
             />
             <Route path="/register" element={<Register />} />
-            <Route path="/DashboardTasks" element={<DashboardTasks />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
 
             <Route
               path="/"
               element={
                 isLogged ? (
-                  <Navigate to="/DashboardTasks" replace />
+                  <Navigate to="/Dashboard" replace />
                 ) : (
                   <Navigate to="/login" replace />
                 )

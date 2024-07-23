@@ -1,7 +1,7 @@
 import TaskForm from "./Task/TaskForm";
 import Task from "./Task/Task";
 import { useState, useEffect } from "react";
-export default function DashboardTasks({}) {
+export default function Dashboard({}) {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -14,6 +14,7 @@ export default function DashboardTasks({}) {
     setTasks(tasks);
   }, []);
 
+  //add new task to array of tasks
   function addTask(name, description) {
     setTasks((prev) => {
       if (!prev) prev = [];
@@ -21,11 +22,19 @@ export default function DashboardTasks({}) {
     });
   }
 
-  function updateTaskDone(taskIndex, newDone) {
+  // Create an array of tasks and update the status of selected task
+  function updateTaskDone(taskIndex, taskDone) {
     setTasks((prev) => {
       const newTasks = [...prev];
-      newTasks[taskIndex].done = newDone;
+      newTasks[taskIndex].done = taskDone;
       return newTasks;
+    });
+  }
+
+  // Remove a task from tasks array 
+  function removeTask(taskIndexToRemove) {
+    setTasks((prev) => {
+      return prev.filter((taskObject, index) => index !== taskIndexToRemove);
     });
   }
 
@@ -34,12 +43,6 @@ export default function DashboardTasks({}) {
   if (tasks) {
     tasks.sort((a, b) => {
       return a.done - b.done;
-    });
-  }
-
-  function removeTask(taskIndexToRemove) {
-    setTasks((prev) => {
-      return prev.filter((taskObject, index) => index !== taskIndexToRemove);
     });
   }
 

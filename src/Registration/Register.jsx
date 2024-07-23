@@ -18,7 +18,7 @@ export default function Register() {
       navigate("/login");
     } 
    };
-
+  //Validate email and passwords 
   const validate = () => {
     const error = {};
     var pass = localStorage.getItem(email);

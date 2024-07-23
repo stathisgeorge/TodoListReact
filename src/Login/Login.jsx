@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import {Link} from 'react-router-dom';
 
 export default function Login({ isLogged, setIsLogged }) {
-  localStorage.setItem("georgestathis13@gmail.com", "17032010");
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -12,7 +10,7 @@ export default function Login({ isLogged, setIsLogged }) {
 
   useEffect(() => {
     if (isLogged) {
-      navigate("/DashboardTasks");
+      navigate("/dashboard");
     }
   }, [isLogged, navigate]);
 
@@ -26,13 +24,14 @@ export default function Login({ isLogged, setIsLogged }) {
       if (pass === password) {
         setIsLogged(true);
         localStorage.setItem("isLogged", "true");
-        navigate("/dashboardTasks");
+        navigate("/dashboard");
       } else {
         setErrors({ wrongCredentials: "Invalid email or password" });
       }
     }
   };
 
+  // Validate email and password
   const validate = () => {
     const error = {};
     if (!email) {
@@ -46,7 +45,6 @@ export default function Login({ isLogged, setIsLogged }) {
     } else if (password.length < 8) {
       error.password = "Password should be more than 8 characters/numbers";
     }
-
     return error;
   };
 
